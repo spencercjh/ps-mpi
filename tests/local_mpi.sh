@@ -7,7 +7,10 @@ export DMLC_NUM_WORKER=4
 # start the scheduler
 export DMLC_PS_ROOT_URI='127.0.0.1'
 export DMLC_PS_ROOT_PORT=8000
-export PS_VERBOSE=0
-mpiexec -n 7 ./test_kv_app &
+#export PS_VERBOSE=0
+
+# mpiexec -n 7 ./test_kv_app &
+#mpiexec -n 7 ./test_connection &
+mpiexec -n 7 ./test_simple_app &
 
 wait

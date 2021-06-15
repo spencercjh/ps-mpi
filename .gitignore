@@ -1,0 +1,10 @@
+build
+deps
+cmake-build-debug
+/src/*.pb.cc
+/src/*.pb.h
+tests/*.d
+.idea
+/tests/test_connection
+/tests/test_kv_app
+/tests/test_simple_app

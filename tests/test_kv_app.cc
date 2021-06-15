@@ -1,11 +1,14 @@
+#include "cmath"
 #include "ps/ps.h"
+
 using namespace ps;
 
 void StartServer() {
-  if (!IsServer()) return;
+  if (!IsServer())
+    return;
   auto server = new KVServer<float>(0);
   server->set_request_handle(KVServerDefaultHandle<float>());
-  RegisterExitCallback([server](){ delete server; });
+  RegisterExitCallback([server]() { delete server; });
 }
 
 void RunWorker() {
@@ -41,7 +44,7 @@ void RunWorker() {
 
   float res = 0;
   for (int i = 0; i < num; ++i) {
-    res += fabs(rets[i] - vals[i] * repeat);
+    res += std::fabs(rets[i] - vals[i] * repeat);
   }
 
   std::cout << "[RESULTS]: " << res / repeat << std::endl;
