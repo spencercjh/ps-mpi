@@ -2,7 +2,8 @@
 
 URL=https://raw.githubusercontent.com/mli/deps/master/build
 ifndef WGET
-WGET = wget
+# PLEASE use your own proxy config
+WGET = wget -e use_proxy=yes -e http_proxy=127.0.0.1:8889 -e https_proxy=127.0.0.1:8889
 endif
 
 # protobuf

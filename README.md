@@ -1,10 +1,19 @@
 # ps-mpi
 
-> code is based on [ps-lite](https://github.com/dmlc/ps-lite). 
+> code is based on [ps-lite](https://github.com/dmlc/ps-lite).
 
 ### Build
 
-Clone and build
+#### Update your own proxy config in the [dependency](make/deps.mk)
+
+```makefile
+ifndef WGET
+# PLEASE use your own proxy config
+WGET = wget -e use_proxy=yes -e http_proxy=127.0.0.1:8889 -e https_proxy=127.0.0.1:8889
+endif
+```
+
+#### Clone and build
 
 ```bash
 git clone https://github.com/DLFC/ps-mpi
