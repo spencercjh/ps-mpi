@@ -8,3 +8,4 @@ tests/*.d
 /tests/test_connection
 /tests/test_kv_app
 /tests/test_simple_app
+.vscode
