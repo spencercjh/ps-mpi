@@ -72,6 +72,7 @@ struct Node {
     std::stringstream ss;
     ss << "role=" << (role == SERVER ? "server" : (role == WORKER ? "worker" : "scheduler"))
        << (id != kEmpty ? ", id=" + std::to_string(id) : "")
+       << (rank_mpi != kEmpty ? ", mpi_rank=" + std::to_string(rank_mpi) : "")
        << ", ip=" << hostname << ", port=" << port << ", is_recovery=" << is_recovery;
 
     return ss.str();

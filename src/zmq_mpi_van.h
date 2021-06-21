@@ -174,15 +174,15 @@ class ZMQ_MPI_Van : public Van {
 
         send_bytes = meta_size_mpi;
 
-        // PS_VLOG(1) << "Send: " << my_node_.rank_mpi << "->" << rank_dis << " ---- " << strlen(meta_buf_mpi) << "???" << meta_size_mpi;
+        PS_VLOG(1) << "Send: " << my_node_.rank_mpi << "->" << rank_dis << " ---- " << strlen(meta_buf_mpi) << "???" << meta_size_mpi;
         MPI_Send(&meta_size_mpi, 1, MPI_INT, rank_dis, 0, MPI_COMM_WORLD);
         MPI_Send(meta_buf_mpi, meta_size_mpi, MPI_CHAR, rank_dis, 1, MPI_COMM_WORLD);
-        // PS_VLOG(1) << "Send: " << my_node_.rank_mpi << "->" << rank_dis << "  --DONE--";
+        PS_VLOG(1) << "Send: " << my_node_.rank_mpi << "->" << rank_dis << "  --DONE--";
 
         MPI_Send(&tmp, 1, MPI_INT, rank_dis, 2, MPI_COMM_WORLD);
 
 
-        // PS_VLOG(1) << "[SEND] tmp= " << tmp;
+        PS_VLOG(1) << "[SEND] tmp= " << tmp;
         for (int i = 0; i < tmp; ++i) {
             // zmq_msg_t data_msg;
 
@@ -329,10 +329,10 @@ class ZMQ_MPI_Van : public Van {
             // bool more = zmq_msg_more(zmsg);
             delete zmsg;
 
-            // PS_VLOG(1) << "Recv: " << my_node_.rank_mpi << "<-" << receiver_mpi_ << " ---- " << strlen(meta_buf) << "???" << meta_size;
+            PS_VLOG(1) << "Recv: " << my_node_.rank_mpi << "<-" << receiver_mpi_ << " ---- " << strlen(meta_buf) << "???" << meta_size;
             MPI_Recv(&meta_size, 1, MPI_INT, receiver_mpi_, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             MPI_Recv(meta_buf, meta_size+1000, MPI_CHAR, receiver_mpi_, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-            // PS_VLOG(1) << "Recv: " << my_node_.rank_mpi << "<-" << receiver_mpi_ << "  --DONE--";
+            PS_VLOG(1) << "Recv: " << my_node_.rank_mpi << "<-" << receiver_mpi_ << "  --DONE--";
 
             recv_bytes += meta_size;
             UnpackMeta(meta_buf, meta_size, &(msg->meta));
